@@ -7,4 +7,5 @@ cron.schedule('0 0 * * *', async () => {
   console.log(`Cron job success`);
 });
 
+redditJob();
 module.exports = cron;
