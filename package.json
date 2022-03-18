@@ -27,5 +27,13 @@
     "piratebay-scraper": "^4.0.0",
     "reddit": "^1.2.1",
     "tmdb": "^2.6.0"
+  },
+  "devDependencies": {
+    "cz-conventional-changelog": "^3.3.0"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
   }
 }
