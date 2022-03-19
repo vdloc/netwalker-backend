@@ -1,18 +1,18 @@
-const express = require("express");
+const express = require('express');
+const { getData, searchDiscogs } = require('../api/discogs');
 const router = express.Router();
-const { searchDiscogs, getData } = require("../services/discogs");
 
 /* GET users listing. */
-router.get("/id", async function (req, res, next) {
-	const data = await searchDiscogs(req.query);
+router.get('/id', async function (req, res, next) {
+  const data = await searchDiscogs(req.query);
 
-	res.send(data);
+  res.send(data);
 });
 
-router.get("/data", async function (req, res, next) {
-	const data = await getData(req.query.id);
+router.get('/data', async function (req, res, next) {
+  const data = await getData(req.query.id);
 
-	res.send(data);
+  res.send(data);
 });
 
 module.exports = router;

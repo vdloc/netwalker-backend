@@ -8,8 +8,7 @@ const redditJobLogger = createDomainLogger(LOG_DOMAIN);
 module.exports = async function () {
   const posts = await getPosts({ limit: 'all' });
   const publishedPosts = posts.filter((post) => post.status === 'published');
-
-  for (let post of publishedPosts) {
+  const promises = publishedPosts.map(async (post) => {
     try {
       await submitPost(post);
       redditJobLogger(
@@ -18,5 +17,7 @@ module.exports = async function () {
     } catch (error) {
       redditJobLogger(`Submit reddit post failed with error ${error}`);
     }
-  }
+  });
+
+  await Promise.all(promises);
 };

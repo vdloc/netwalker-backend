@@ -1,13 +1,13 @@
-const express = require("express");
+const express = require('express');
 const router = express.Router();
-const wallhavenDownload = require("../services/wallhaven");
+const wallhavenDownload = require('../api/wallhaven');
 
 /* GET users listing. */
-router.get("/", async function (req, res, next) {
-	const { query } = req.query;
-	await wallhavenDownload(query);
+router.get('/', async function (req, res, next) {
+  const { query } = req.query;
+  await wallhavenDownload(query);
 
-	res.send("OK");
+  res.send('OK');
 });
 
 module.exports = router;
