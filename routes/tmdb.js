@@ -1,5 +1,4 @@
 const express = require('express');
-const fs = require('fs-extra');
 const { searchMovie, getMovieData, getTVData } = require('../api/tmdb');
 const router = express.Router();
 

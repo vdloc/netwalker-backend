@@ -9,13 +9,15 @@ module.exports = async function () {
   const posts = await getPosts({ limit: 'all' });
   const publishedPosts = posts.filter((post) => post.status === 'published');
   const promises = publishedPosts.map(async (post) => {
+    const { title, url } = post;
+
     try {
       await submitPost(post);
       redditJobLogger(
-        `Submit post with title : ${title} and URL : ${url} to subreddit ${subreddit} success.`
+        `Submit post with title : ${title} and URL : ${url} to subreddit success.`
       );
     } catch (error) {
-      redditJobLogger(`Submit reddit post failed with error ${error}`);
+      redditJobLogger(`Submit reddit post ${title} failed with error ${error}`);
     }
   });
 
