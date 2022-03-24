@@ -15,6 +15,7 @@ const discogsRouter = require('./routes/discogs');
 const loginRouter = require('./routes/login');
 const auth = require('./services/auth');
 const app = express();
+const jobs = require('./jobs');
 
 app.use(cors());
 app.use(logger('dev'));
